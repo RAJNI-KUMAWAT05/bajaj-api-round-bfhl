@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bajaj Finserv Health API Challenge (BFHL)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <span class="badge">BFHL API Portal</span>
+                <h1>Bajaj Finserv Round</h1>
+            </div>
+            <div class="author-details">
+                <p class="author-name">Rajni Kumawat</p>
+                <p class="author-roll">Roll No: 0827CI231106</p>
+                <p class="author-email">rajnikumawat230476@acropolis.in</p>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <!-- Left Side: Input Panel -->
+            <section class="panel input-panel">
+                <div class="panel-header">
+                    <h2>API Input Payload</h2>
+                    <span class="status-indicator" id="api-status">API Offline</span>
+                </div>
+                <div class="panel-body">
+                    <div class="input-group">
+                        <label for="json-input">JSON Payload (data array)</label>
+                        <textarea id="json-input" placeholder='{ "data": ["a", "1", "334", "4", "R", "$"] }'>{ "data": ["a", "1", "334", "4", "R", "$"] }</textarea>
+                        <p class="helper-text">Enter a valid JSON object containing a "data" string array.</p>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="backend-url">Target API URL</label>
+                        <input type="text" id="backend-url" value="https://bajaj-api-round-bfhl-production.up.railway.app/bfhl">
+                    </div>
+
+                    <button id="submit-btn" class="primary-btn">
+                        <span>Process Payload</span>
+                        <div class="loader" id="btn-loader"></div>
+                    </button>
+                    
+                    <div id="error-box" class="error-box">
+                        <svg viewBox="0 0 24 24" class="icon"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                        <span id="error-message">Invalid JSON structure</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Side: Results Panel -->
+            <section class="panel results-panel" id="results-panel">
+                <div class="panel-header">
+                    <h2>API Response Details</h2>
+                </div>
+                <div class="panel-body empty-state" id="empty-results">
+                    <div class="illustration">
+                        <svg viewBox="0 0 24 24" width="64" height="64"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm3-4H7V7h13v2z"/></svg>
+                    </div>
+                    <h3>No Data Processed</h3>
+                    <p>Enter your JSON payload in the input panel and click "Process Payload" to view response fields.</p>
+                </div>
+                
+                <div class="panel-body results-content" id="results-content">
+                    <!-- Filters section -->
+                    <div class="filter-section">
+                        <label>Filter Output List Elements</label>
+                        <div class="filter-options">
+                            <button class="filter-pill active" data-filter="alphabets">Alphabets</button>
+                            <button class="filter-pill active" data-filter="numbers">Numbers</button>
+                            <button class="filter-pill active" data-filter="special">Special Characters</button>
+                        </div>
+                    </div>
+
+                    <!-- Output stats -->
+                    <div class="summary-cards">
+                        <div class="stat-card">
+                            <span class="stat-label">Numeric Sum</span>
+                            <span class="stat-value" id="res-sum">0</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Alternating Caps Concat</span>
+                            <span class="stat-value" id="res-concat">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Details Accordion -->
+                    <div class="details-section">
+                        <div class="detail-row">
+                            <span class="lbl">Is Success</span>
+                            <span class="val success-badge" id="res-success">true</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="lbl">User ID</span>
+                            <span class="val highlight" id="res-userid">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="lbl">Email Address</span>
+                            <span class="val" id="res-email">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="lbl">Roll Number</span>
+                            <span class="val highlight" id="res-roll">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Filtered Outputs -->
+                    <div class="list-display">
+                        <div class="list-block" id="block-alphabets">
+                            <h4>Extracted Alphabets (Uppercase)</h4>
+                            <div class="items-container" id="list-alphabets"></div>
+                        </div>
+                        <div class="list-block" id="block-numbers">
+                            <h4>Extracted Numbers</h4>
+                            <div class="items-container" id="list-numbers"></div>
+                        </div>
+                        <div class="list-block" id="block-special">
+                            <h4>Special Characters</h4>
+                            <div class="items-container" id="list-special"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
