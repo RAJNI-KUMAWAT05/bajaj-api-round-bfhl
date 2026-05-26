@@ -13,8 +13,9 @@ A production-ready Spring Boot REST API built for the **Bajaj Finserv Health API
 ---
 
 ## 🚀 Live Demo & Deployment
-- **Base URL:** [https://bajaj-api-round-bfhl-production.up.railway.app](https://bajaj-api-round-bfhl-production.up.railway.app)
-- **Direct POST/GET Endpoint:** [https://bajaj-api-round-bfhl-production.up.railway.app/bfhl](https://bajaj-api-round-bfhl-production.up.railway.app/bfhl)
+- **Interactive Web UI (Netlify):** [https://bajaj-api-round-bfhl.netlify.app](https://bajaj-api-round-bfhl.netlify.app)
+- **Backend API Base URL (Railway):** [https://bajaj-api-round-bfhl-production.up.railway.app](https://bajaj-api-round-bfhl-production.up.railway.app)
+- **Direct API Endpoint:** [https://bajaj-api-round-bfhl-production.up.railway.app/bfhl](https://bajaj-api-round-bfhl-production.up.railway.app/bfhl)
 
 ---
 
