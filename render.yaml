@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: bajaj-api-round-bfhl
+    env: java
+    buildCommand: mvn clean install -DskipTests
+    startCommand: java -jar target/bfhl-api-1.0.0.jar --server.port=$PORT
+    envVars:
+      - key: PORT
+        value: 8080
